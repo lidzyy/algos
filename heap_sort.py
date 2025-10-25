@@ -76,9 +76,23 @@ def heapify_down(arr, n, i):
         if largest == i:
             break
         arr[i], arr[largest] = arr[largest], arr[i]
+
         i = largest
 
+def build_heap(arr):
+    """
+    Ultimo nó interno: start = n // 2 - 1
+    Loop: for i in range(start, -1, -1) : heapify_down(arr, n, i)
+    Constrói um max-heap a partir de um array qualquer, usando heapify_down.
+    """
+    n = len(arr)
+    start = n // 2 - 1
+    for i in range(start, -1, -1):
+        heapify_down(arr, n, i)
+    return arr 
 
-arr = [3, 19, 1, 14, 8, 7]
+
+arr = [3, 19, 1, 14, 8, 7, 2]
 heapify_down(arr, len(arr), 0)
 print(arr)
+print(build_heap(arr))
